@@ -1,0 +1,9 @@
+FROM alpine:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apk update && apk add apache2 && echo "ServerName localhost" >> /etc/apache2/apache2.conf && apk add wget
+COPY . /var/www/html/
+EXPOSE 80
+WORKDIR /var/www/localhost/htdocs/
+RUN wget -O index.html www.icesi.edu.co 
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"] 
