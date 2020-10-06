@@ -1,0 +1,10 @@
+FROM alpine:latest
+
+RUN apk update && apk add apache2 && apk add wget && echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
+WORKDIR /var/www/localhost/htdocs
+
+RUN rm index.html && wget -O index.html icesi.edu.co
+
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+
