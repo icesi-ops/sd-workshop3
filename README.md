@@ -9,9 +9,11 @@ La diferencia entre ambos Dockerfile es la cantidad de comandos RUN que contiene
 
 Los datos de las imagenes se peden ver en la captura que se muestra a continuacion, siendo "variosrun" el tag de la imagen creada partir del primer Dockerfile, y "unrun" el tag de la imagen creada a partir del segundo Dockerfile:
 
+![Lista de imagenes](https://raw.githubusercontent.com/MarceHM/sd-workshop3/blob/main/imagenesDocker.png)
+
 Como se puede ver, ambas imagenes pesan lo mismo (11.6.MB), a pesar de que la cantidad de lineas de cada Dockerfile es distinta. De esto se puede decir que la cantidad de lineas en un Dockerfile no influye en el peso de la imagen a partir de el.
 
-###Diferencia entre CMD y ENTRYPOINT
+### Diferencia entre CMD y ENTRYPOINT
 
 Ambos comandos funcionan y se utilizan de manera distinta: **ENTRYPOINT** define el ejecutable principal que un contenedor va a utlizar (por defecto es /bin/sh -c), mientras que **CMD** define los parametros que seran pasados al ejecutable.
 
