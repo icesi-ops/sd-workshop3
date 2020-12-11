@@ -9,7 +9,7 @@ La diferencia entre ambos Dockerfile es la cantidad de comandos RUN que contiene
 
 Los datos de las imagenes se peden ver en la captura que se muestra a continuacion, siendo "variosrun" el tag de la imagen creada partir del primer Dockerfile, y "unrun" el tag de la imagen creada a partir del segundo Dockerfile:
 
-![Lista de imagenes](https://raw.githubusercontent.com/MarceHM/sd-workshop3/blob/main/imagenesDocker.png)
+![Lista de imagenes](https://raw.githubusercontent.com/MarceHM/sd-workshop3/main/imagenesDocker.png)
 
 Como se puede ver, ambas imagenes pesan lo mismo (11.6.MB), a pesar de que la cantidad de lineas de cada Dockerfile es distinta. De esto se puede decir que la cantidad de lineas en un Dockerfile no influye en el peso de la imagen a partir de el.
 
