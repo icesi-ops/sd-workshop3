@@ -6,5 +6,17 @@ Repor for workshop3
 - Create a README.md showing the execution of container (a screenshot say more than 1000 words)
 - Make a pull request to this repo.
 
+Maria Ordñez
+Lina Acosta
+Santiago Zuñiga
+Cristian Gallo
+Sebastian garcia
+Javier torres
+Daniel villota
+Camilo enriquez
+Cesar canales
+Nelson
+Ana Maria
+Cristian Gironza
 ## Bonus
 https://github.com/icesi-ops/training_microservices/tree/master/icesiHealthApp
