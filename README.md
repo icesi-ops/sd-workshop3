@@ -15,5 +15,8 @@ DOCKER_COMPOSE_INTRO00
 ![Alt text](docker_compose/evidence/screenshotActiveService.png?raw=true "Evidence docker_compose 1")
 ![Alt text](docker_compose/evidence/screenshotCMDrun.png?raw=true "Evidence docker_compose 2")
 
-AIK-PORTAL
+AIK-PORTAL-UI
 ![Alt text](aik-portal/evidence/img.png?raw=true "Evidence aik-portal 1")
+
+AIK-PORTAL-API
+![Alt text](aik-portal/evidence/img2.png?raw=true "Evidence aik-portal 2")
