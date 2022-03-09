@@ -6,17 +6,14 @@ Repor for workshop3
 - Create a README.md showing the execution of container (a screenshot say more than 1000 words)
 - Make a pull request to this repo.
 
-Maria Ordñez
-Lina Acosta
-Santiago Zuñiga
-Cristian Gallo
-Sebastian garcia
-Javier torres
-Daniel villota
-Camilo enriquez
-Cesar canales
-Nelson
-Ana Maria
-Cristian Gironza
-## Bonus
-https://github.com/icesi-ops/training_microservices/tree/master/icesiHealthApp
+EVIDENCES - SANTIAGO ZUÑIGA GARCIA
+
+MICROSERVICE_A
+![Alt text](microservice_a/evidences/img.png?raw=true "Evidence")
+
+DOCKER_COMPOSE_INTRO00
+![Alt text](docker_compose/evidence/screenshotActiveService.png?raw=true "Evidence docker_compose 1")
+![Alt text](docker_compose/evidence/screenshotCMDrun.png?raw=true "Evidence docker_compose 2")
+
+AIK-PORTAL
+![Alt text](aik-portal/evidence/img.png?raw=true "Evidence aik-portal 1")
