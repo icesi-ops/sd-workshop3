@@ -90,4 +90,3 @@
   https://hub.docker.com/r/ordonezmaria1/intro
   https://hub.docker.com/r/ordonezmaria1/aik-app-api
   https://hub.docker.com/r/ordonezmaria1/aik-app-ui
-   
