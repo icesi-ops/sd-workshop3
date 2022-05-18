@@ -32,10 +32,14 @@
     
   ### Commands
       docker build -t ordonezmaria1/intro .
-      docker-compose up
+      docker network create nw
+      docker run -t -d -p 5000:5000 --network=nw ordonezmaria1/intro
+      docker run --name redis -p 6379:6379 --network nw -d redis:alpine
+      
   ### Screenshot
-   ![image](https://user-images.githubusercontent.com/47904094/168923767-e6b969a3-0712-4334-879f-cc73aed8786a.png)
-   ![image](https://user-images.githubusercontent.com/47904094/168923906-01586651-5465-48bc-96dc-69be76a2ff57.png)
+   ![image](https://user-images.githubusercontent.com/47904094/169145528-fd54d3b1-b1bb-4790-b8eb-4ffb7ac31d79.png)
+   ![image](https://user-images.githubusercontent.com/47904094/169145623-01ccc28a-8adb-4292-a212-692f7031c9aa.png)
+
 ## aik-portal
    ## aik-app-api
    ### aik-app-api dockerfile
@@ -87,7 +91,10 @@
 
 ## Imagenes en dockerhub
   https://hub.docker.com/r/ordonezmaria1/docker_python
+  
   https://hub.docker.com/r/ordonezmaria1/intro
+  
   https://hub.docker.com/r/ordonezmaria1/aik-app-api
+  
   https://hub.docker.com/r/ordonezmaria1/aik-app-ui
-  .
+
