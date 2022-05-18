@@ -28,7 +28,7 @@
     COPY . .
     CMD ["python", "app.py"]
     
-![image](https://user-images.githubusercontent.com/47891444/168921896-09264582-87d3-4c61-98be-981ca61fdbdb.png)
+![image](https://user-images.githubusercontent.com/47891444/169143283-e1daab2b-6315-47ef-9aa6-0dd6fbde91aa.png)
 ![image](https://user-images.githubusercontent.com/47891444/168921913-69044044-05cd-49e3-be91-c0d14b8be1fe.png)
 ![image](https://user-images.githubusercontent.com/47891444/168921920-f71cae33-bf15-4978-ad7a-0afc104fb4c9.png)
 
