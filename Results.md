@@ -1,4 +1,8 @@
-Para realizar el punto 2 necesitamos construir el siguiente dockerfile
+Para realizar el punto 2 necesitamos construir el siguiente dockerfile usando el comando 
+
+~~~
+  
+~~~
 
 ~~~
 FROM alpine
@@ -14,5 +18,6 @@ EXPOSE 8080
 CMD ["/usr/bin/python", "/app/sources/microservice_a.py"]
 ~~~
 
+![imagen](https://user-images.githubusercontent.com/44851531/168937945-8300703b-d2d6-47e0-80df-4b05c8a5eff3.png)
 
 
