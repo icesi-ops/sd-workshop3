@@ -5,6 +5,12 @@ Repor for workshop3
 ![image](https://user-images.githubusercontent.com/8462127/169176314-ca7d4291-e08e-42c4-a81c-320342bf55bb.png)
 ![screen2](https://user-images.githubusercontent.com/8462127/169174652-ddcabe63-e68e-4288-9dcd-d794c18cf586.png)
 - Create dockerfiles for the next code -> https://github.com/icesi-ops/training_docker/tree/master/04_docker_compose/00_intro and push it to dockerhub
+
+![image](https://user-images.githubusercontent.com/8462127/169177805-d11a3a89-2b4b-4c2a-bf1b-bf4814d60025.png)
+![image](https://user-images.githubusercontent.com/8462127/169178182-60313753-a813-4fad-9fb1-0ad26ad1afae.png)
+![image](https://user-images.githubusercontent.com/8462127/169179363-2791de3a-16a8-4327-99dc-d85b1edcf9d8.png)
+![image](https://user-images.githubusercontent.com/8462127/169179399-c89aa7d1-75ad-4b50-959c-38d71b7d139f.png)
+
 - Create dockerfiles for the next code -> https://github.com/icesi-ops/aik-portal aik-ui and aik-api and push it to dockerhub
 - Create a README.md showing the execution of container (a screenshot say more than 1000 words)
 - Make a pull request to this repo.
