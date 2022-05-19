@@ -1,5 +1,7 @@
-FROM python:3.4-alpine
-ADD . /code
+FROM python
+LABEL mail: javierandrestorresreyes@gmail.com
+COPY . /code
 WORKDIR /code
-RUN pip install -r requirements.txt
-CMD ["python", "app.py"]
+RUN pip3 install -r requirements.txt
+EXPOSE 5000
+CMD ["python3", "app.py"]
