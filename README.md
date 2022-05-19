@@ -12,6 +12,12 @@ Repor for workshop3
 ![image](https://user-images.githubusercontent.com/8462127/169179399-c89aa7d1-75ad-4b50-959c-38d71b7d139f.png)
 
 - Create dockerfiles for the next code -> https://github.com/icesi-ops/aik-portal aik-ui and aik-api and push it to dockerhub
+
+![image](https://user-images.githubusercontent.com/8462127/169181489-11a16d6d-2db3-4343-aea6-2745f5256290.png)
+![image](https://user-images.githubusercontent.com/8462127/169181800-865b8e03-9eaa-4ecd-8c02-504e2bbe058c.png)
+![image](https://user-images.githubusercontent.com/8462127/169181842-2bdc2bcb-1cbd-4674-a024-56e94118dc6a.png)
+![image](https://user-images.githubusercontent.com/8462127/169181878-1bf454fe-b884-4d27-8d86-3d3af0e91829.png)
+
 - Create a README.md showing the execution of container (a screenshot say more than 1000 words)
 - Make a pull request to this repo.
 
