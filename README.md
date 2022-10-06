@@ -4,5 +4,19 @@ Repor for workshop3
 - Create a README.md showing the execution of container (a screenshot say more than 1000 words)
 - Make a pull request to this repo.
 
+Juan David Ballesteros Workshop 3
 
-Due date 10/05/20222 at 8:30PM
+Para correr la aplicación es necesario correr el siguiente comando
+    `docker run -it -p 3000:8080 vue`
+
+La imagen se encuentra en DockerHub en
+    [Enlace al repositorio](https://hub.docker.com/repository/docker/juanballesteros/vue_distri)
+
+> Para hacer pull
+    `docker pull juanballesteros/vue_distri `   
+
+Imagenes del funcionamiento de la aplicación
+
+![CLI](./CLI.png)
+![Navegador](./WEB.png)
+
