@@ -21,7 +21,7 @@ Due date 10/05/20222 at 8:30PM
 
 ![Deploy Frontend](./ss/FrontendDeploy.png "Frontend Desplegado")
 
-La imagen se encuentra en un repositorio de DockerHub [Enlace Repositorio](https://hub.docker.com/repository/docker/andres192715/frontend)
+La imagen se encuentra en un repositorio de DockerHub [Enlace Repositorio](https://hub.docker.com/r/andres192715/frontend)
 
 
 
