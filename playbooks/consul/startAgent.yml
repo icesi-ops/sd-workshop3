@@ -1,0 +1,9 @@
+---
+- hosts: web-1
+  become: true
+  name: Init consul agent
+  tasks:
+   - name: Apply node.js template
+     template:
+      src: templates/node.j2
+      dest: /etc/consul.d/node.json

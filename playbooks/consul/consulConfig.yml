@@ -1,0 +1,38 @@
+---
+- hosts: lb
+  become: true
+  tasks:
+    - name: Instalar paquetes necesarios
+      yum:
+        name:
+          - wget
+          - unzip
+        state: present
+        update_cache: true
+
+    - name: Descargar archivo de instalación de Consul
+      get_url:
+        url: https://releases.hashicorp.com/consul/1.15.1/consul_1.15.1_linux_amd64.zip
+        dest: /tmp/consul_1.15.1_linux_amd64.zip
+
+    - name: Descomprimir archivo de instalación de Consul
+      unarchive:
+        src: /tmp/consul_1.15.1_linux_amd64.zip
+        dest: /tmp
+        remote_src: true
+
+    - name: Mover archivo Consul a /usr/bin
+      shell:
+        cmd: mv /tmp/consul /usr/bin
+
+    - name: Crear directorios de configuración de Consul
+      become: true
+      file:
+        path: /etc/consul.d
+        state: directory
+
+    - name: Crear directorio de datos de Consul
+      file:
+        path: /etc/consul/data
+        state: directory
+        mode: '0755'
