@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
           ]
         }
        lb.vm.provision "shell", inline: <<-SHELL 
-        consul agent -server -bootstrap-expect=1 -data-dir=/etc/consul/data -node=agent.server -bind=192.168.56.200 -enable-script-checks=true -config-dir=/etc/consul.d -client 0.0.0.0 &
+        nohup consul agent -server -bootstrap-expect=1 -data-dir=/etc/consul/data -node=agent.server -bind=192.168.56.200 -enable-script-checks=true -config-dir=/etc/consul.d -client 0.0.0.0 > consul.log &
        SHELL
       end
     end
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
         "node": "web-#{i}",
       }   
       web.vm.provision "shell", inline: <<-SHELL 
-        consul agent --data-dir=/etc/consul/data -node=$HOSTNAME -bind=192.168.56.11 -enable-script-checks=true -config-dir=/etc/consul.d &
+        nohup consul agent --data-dir=/etc/consul/data -node=$HOSTNAME -bind=192.168.56.11 -enable-script-checks=true -config-dir=/etc/consul.d > consul.log &
         consul join 192.168.56.200
       SHELL
       end
