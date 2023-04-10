@@ -1,0 +1,76 @@
+- name: Configurar Consul en LB
+  hosts: lb
+  become: true
+
+  tasks:
+    - name: Crear usuario consul
+      user:
+        name: consul
+        password: "{{ 'consul' | password_hash('sha512') }}"
+        update_password: on_create
+
+    - name: Cambiar propietario de /etc/consul.d/
+      file:
+        path: /etc/consul.d/
+        owner: consul
+        group: consul
+        recurse: yes
+
+    - name: Cambiar propietario de /etc/consul
+      file:
+        path: /etc/consul
+        owner: consul
+        group: consul
+        recurse: yes
+
+    - name: Iniciar firewall
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: Abrir puertos de Consul en firewall
+      firewalld:
+        port: "{{ item }}"
+        permanent: true
+        state: enabled
+        immediate: true
+      loop:
+        - 8301/tcp
+        - 8300/tcp
+        - 8500/tcp
+
+    - name: Recargar firewall
+      become: true
+      systemd:
+        name: firewalld
+        state: restarted
+
+    - name: Crear directorio remoto temporal
+      file:
+        path: /home/consul/.ansible/tmp
+        owner: consul
+        group: consul
+        mode: '0700'
+        state: directory
+
+    - name: Probando el cambio de usuario
+      become_user: consul
+      raw: whoami
+
+    - name: Ejecutar agente Consul
+      shell: su -consul -c "consul agent -server -bootstrap-expect=1 -data-dir=/etc/consul/data -node=agent-server -bind=192.168.56.200 -enable-script-checks=true -config-dir=/etc/consul.d -client 0.0.0.0 &"
+
+    - name: Descarga el archivo haproxy.tpl desde GitHub
+      get_url:
+        url: https://raw.githubusercontent.com/ICESI/ds-discovery-service/master/templates/haproxy.tpl
+        dest: /etc/consul-template/haproxy.tpl
+      register: download_status
+
+    - name: Reemplazar nombre del servicio en haproxy.tpl
+      become: true
+      replace:
+        path: /etc/consul-template/haproxy.tpl
+        regexp: 'microservice-a'
+        replace: 'web-1'
+      register: replace_output

@@ -1,0 +1,17 @@
+---
+- name: Configuración haproxy.cfg
+  hosts: lb
+  become: yes
+
+  tasks:
+    - name: Eliminar archivo haproxy.cfg
+      become: true
+      file:
+        path: /etc/haproxy.cfg
+        state: absent
+
+    - name: Generar archivo haproxy.cfg
+      become: true
+      command: consul-template -consul-addr "192.168.56.200:8500" -template "/etc/consul-template/haproxy.tpl:/etc/haproxy.cfg" -once
+      register: command_output
+

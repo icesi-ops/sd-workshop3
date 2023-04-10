@@ -1,0 +1,73 @@
+---
+- name: Configuración de Consul en Web-1
+  hosts: web-1
+  become: yes
+
+  tasks:
+    - name: Crear usuario consul
+      user:
+        name: consul
+        password: "{{ 'consul' | password_hash('sha512') }}"
+        state: present
+
+    - name: Cambiar propietario de /etc/consul.d/
+      file:
+        path: /etc/consul.d/
+        owner: consul
+        group: consul
+        recurse: yes
+
+    - name: Cambiar propietario de /etc/consul
+      file:
+        path: /etc/consul
+        owner: consul
+        group: consul
+        recurse: yes
+
+    - name: Iniciar firewall
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: Abrir puertos de Consul en firewall
+      firewalld:
+        port: "{{ item }}"
+        permanent: true
+        state: enabled
+        immediate: true
+      loop:
+        - 8301/tcp
+        - 8300/tcp
+        - 8500/tcp
+
+    - name: Recargar firewall
+      become: true
+      systemd:
+        name: firewalld
+        state: restarted
+
+    - name: Crear archivo de servicio web-1 en /etc/consul.d
+      copy:
+        content: '{"service": {"name": "web-1", "tags": ["httpd"], "port": 80}}'
+        dest: /etc/consul.d/web-1.json
+
+    - name: Crear directorio remoto temporal
+      file:
+        path: /home/consul/.ansible/tmp
+        owner: consul
+        group: consul
+        mode: '0700'
+        state: directory
+
+    - name: Probando el cambio de usuario
+      become_user: consul
+      raw: whoami
+
+    - name: Iniciar agente Consul
+      become_user: consul
+      shell: consul agent -data-dir=/etc/consul/data -node=$HOSTNAME -bind=192.168.56.11 -enable-script-checks=true -config-dir=/etc/consul.d &
+
+    - name: Unirse al servidor Consul
+      become_user: consul
+      shell: consul join 192.168.56.200
