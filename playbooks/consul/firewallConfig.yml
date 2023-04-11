@@ -1,0 +1,71 @@
+---
+- hosts: 
+  - lb
+  - web-1
+  - web-2
+  tasks:
+    - name: Crear usuario consul
+      become: true
+      become_user: root
+      user:
+        name: consul
+        state: present
+
+    - name: Cambiar propietario y grupo de /etc/consul
+      become: true
+      become_user: root
+      file:
+        path: /etc/consul
+        owner: consul
+        group: consul
+        recurse: true
+
+    - name: Cambiar propietario y grupo de /etc/consul.d/
+      become: true
+      become_user: root
+      file:
+        path: /etc/consul.d/
+        owner: consul
+        group: consul
+        recurse: yes
+
+    - name: Iniciar servicio firewalld
+      become: true
+      become_user: root
+      service:
+        name: firewalld
+        state: started
+
+    - name: Abrir puerto 8301/tcp en firewalld
+      become: true
+      become_user: root
+      firewalld:
+        zone: public
+        port: 8301/tcp
+        permanent: true
+        state: enabled
+
+    - name: Abrir puerto 8300/tcp en firewalld
+      become: true
+      become_user: root
+      firewalld:
+        zone: public
+        port: 8300/tcp
+        permanent: true
+        state: enabled
+
+    - name: Abrir puerto 8500/tcp en firewalld
+      become: true
+      become_user: root
+      firewalld:
+        zone: public
+        port: 8500/tcp
+        permanent: true
+        state: enabled
+
+    - name: Recargar configuración de firewalld
+      become: true
+      become_user: root
+      firewalld:
+        reload: true
+

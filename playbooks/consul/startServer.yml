@@ -1,0 +1,32 @@
+---
+- hosts: lb
+  become: true
+  name: Init consul server
+  tasks:
+
+    - name: Instalar paquetes necesarios
+      yum:
+        name:
+          - unzip
+          - wget
+        state: present
+
+    - name: Descargar archivo de instalación de Consul-template
+      get_url:
+        url: https://releases.hashicorp.com/consul/1.15.1/consul_1.15.1_linux_amd64.zip
+        dest: /tmp/consul-1.15.1_linux_amd64.zip
+
+    - name: Descomprimir archivo de instalación de Consul
+      unarchive:
+        src: /tmp/consul-1.15.1_linux_amd64.zip
+        dest: /tmp
+        remote_src: true
+
+    - name: Mover archivo Consul a /usr/bin
+      command:
+        cmd: mv /tmp/consul /usr/bin
+
+    - name: Crear directorio de configuración de Consul
+      file:
+        path: /etc/consul.d
+        state: directory
