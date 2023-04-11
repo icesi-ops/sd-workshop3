@@ -1,0 +1,20 @@
+- name: Add firewall rules for lb
+  hosts: lb
+  become: yes
+  tasks:
+    - name: Add firewall rules
+      firewalld:
+        port: "{{ item }}"
+        permanent: yes
+        state: enabled
+        zone: public
+      loop:
+        - 8301/tcp
+        - 8300/tcp
+        - 8500/tcp
+        - 5000/tcp
+
+    - name: reload service firewalld
+      systemd:
+        name: firewalld
+        state: reloaded

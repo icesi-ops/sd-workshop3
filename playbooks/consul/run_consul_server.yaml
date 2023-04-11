@@ -1,0 +1,12 @@
+
+
+- name: Install Consul and create directories
+  hosts: lb
+  become: yes
+  tasks:
+    - name: Start Consul agent as consul user
+      become_user: consul
+      shell: nohup consul agent -server -bootstrap-expect=1 -data-dir=/etc/consul/data -node=agent-server -bind=192.168.56.200 -enable-script-checks=true -config-dir=/etc/consul.d -client 0.0.0.0 &>consul.log  &
+
+
+

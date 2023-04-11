@@ -1,0 +1,19 @@
+
+
+- name: Install Consul and create directories
+  hosts: web-1
+  become: yes
+  tasks:
+    - name: Run Consul agent
+      become_user: consul
+      shell: nohup consul agent -data-dir=/etc/consul/data -node=agent-one -bind=192.168.56.101 -enable-script-checks=true -config-dir=/etc/consul.d &>consul.log  &
+
+    - name: Create microservice-a.json
+      become_user: consul
+      template:
+        src: templates/web-1.j2
+        dest: /etc/consul.d/web-1.json
+
+    - name: Join Consul cluster
+      become_user: consul
+      command: consul join 192.168.56.200
