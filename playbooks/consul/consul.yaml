@@ -1,0 +1,79 @@
+---
+- name: Install Consul and create directories
+  hosts: lb, web-1
+  become: yes
+  tasks:
+    - name: Install wget and unzip packages
+      yum:
+        name:
+          - wget
+          - unzip
+          - haproxy
+        state: present
+
+    - name: Download and unzip Consul binary
+      get_url:
+        url: https://releases.hashicorp.com/consul/1.15.1/consul_1.15.1_linux_amd64.zip
+        dest: /tmp/consul_1.15.1_linux_amd64.zip
+
+    - name: Unzip consul
+      unarchive:
+        src: /tmp/consul_1.15.1_linux_amd64.zip
+        dest: /tmp
+        remote_src: yes
+
+    - name: Move Consul binary to /usr/bin
+      command: mv /tmp/consul /usr/bin
+
+    - name: Create consul.d directory
+      file:
+        path: /etc/consul.d
+        state: directory
+
+    - name: Create consul data directory
+      file:
+        path: /etc/consul/data
+        state: directory
+        mode: 0755
+
+    - name: Download and extract Consul-Template binary
+      get_url:
+        url: https://releases.hashicorp.com/consul-template/0.30.0/consul-template_0.30.0_linux_amd64.zip
+        dest: /tmp/consul-template_0.30.0_linux_amd64.zip
+
+    - name: Unzip consul template
+      unarchive:
+        src: /tmp/consul-template_0.30.0_linux_amd64.zip
+        dest: /tmp
+        remote_src: yes
+
+    - name: Move Consul-Template binary to /usr/bin
+      command: mv /tmp/consul-template /usr/bin
+
+    - name: Create consul-template directory
+      file:
+        path: /etc/consul-template
+        state: directory
+
+    - name: Create consul user
+      user:
+        name: consul
+        password: 'consul'
+        comment: "Consul user"
+        createhome: no
+        shell: /bin/bash
+    
+    - name: Set ownership of /etc/consul
+      file:
+        path: /etc/consul
+        owner: consul
+        group: consul
+        recurse: yes
+
+    - name: Set ownership of /etc/consul.d
+      file:
+        path: /etc/consul.d
+        owner: consul
+        group: consul
+        recurse: yes
+

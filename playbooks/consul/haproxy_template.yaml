@@ -1,0 +1,27 @@
+
+
+- name: Configure template
+  hosts: lb
+  become: yes
+  tasks:
+    
+    - name: Download file
+      get_url:
+        url: https://raw.githubusercontent.com/ICESI/ds-discovery-service/master/templates/haproxy.tpl
+        dest: /etc/consul-template/haproxy.tpl
+
+    - name: Replace range
+      replace:
+        path: /etc/consul-template/haproxy.tpl
+        regexp: 'microservice-a'
+        replace: 'web-1'
+
+    - name: Generate tpl archive
+      shell: consul-template -consul-addr "192.168.56.200:8500" -template "/etc/consul-template/haproxy.tpl:/etc/haproxy/haproxy.cfg" -once
+
+    - name: Run consul template
+      become_user: consul
+      shell: nohup consul-template -consul-addr "192.168.56.200:8500" -template "/etc/consul-template/haproxy.tpl:/etc/haproxy/haproxy.cfg:systemctl restart haproxy" &>consul.log  &
+
+
+

@@ -1,0 +1,20 @@
+- name: Add firewall rules for web-server
+  hosts: web-1
+  become: true
+  tasks:
+    - name: Allow incoming traffic on port 8301/tcp
+      firewalld:
+        port: 8301/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Allow incoming traffic on port 80/tcp
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+
+    - name: reload service firewalld
+      systemd:
+        name: firewalld
+        state: reloaded
