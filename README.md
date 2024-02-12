@@ -40,3 +40,33 @@ There is no accepted definition of a microservice, you will find for example:
 · https://www.geeksforgeeks.org/todo-list-app-using-flask-python/
 · https://github.com/cosmoshadab/todo-app-flask
 · https://github.com/bhavaniravi/flask-tutorial/blob/master/app/app.py
+
+
+## Project Overview
+
+This repository contains the implementation of a microservices-based system for managing invoices. The system utilizes Docker containers for deploying microservices and databases, including MySQL, PostgreSQL, and MongoDB.
+
+### Project Components
+
+- **Microservices Images**: Docker images for microservices used in the system.
+- **Database Images**: Docker images for MySQL and PostgreSQL databases.
+- **MongoDB Schema**: Blank schema for MongoDB.
+- **Invoice Spring Project**: A Spring project for managing invoices.
+
+### Detailed Explanation
+
+#### Microservices Images
+
+The microservices images are containerized applications that handle specific functionalities within the system. Each microservice is designed to be independent and scalable. By containerizing them, we ensure consistency and ease of deployment across different environments.
+
+#### Database Images
+
+The database images include Docker configurations for MySQL and PostgreSQL. These are essential for storing and managing data related to invoices. Dockerizing databases simplifies the setup process and allows for easy replication and scaling as needed.
+
+#### MongoDB Schema
+
+The MongoDB schema provided here serves as a starting point for integrating MongoDB into the system. MongoDB is a NoSQL database that offers flexibility in handling unstructured data, making it suitable for certain use cases within the invoice management system.
+
+#### Invoice Spring Project
+
+The Invoice Spring project is a key component of the system, built using the Spring framework. It addresses a specific requirement related to invoice registration. Previously, the registration modal did not allow for balance subtraction or tracking state changes. The modifications made to this project enable these functionalities, enhancing the overall functionality and usability of the system.
