@@ -101,7 +101,7 @@ docker image push usuario-docker/nombreimagen:tag
 ```
 
 ### DockerHub Repository
-![img.png](img.png)
+![img.png](assets/img.png)
 
 ## 3. Execute the script
 
@@ -112,7 +112,10 @@ chmod +x deploy.sh
 ```
 
 ## 4. Test the services
-![img_1.png](img_1.png)
+![img_1.png](assets/img_1.png)
+
+## 5. Invoice refactor processTransactionEvent
+![img_2.png](assets/img_2.png)
   
     
 
