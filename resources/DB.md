@@ -50,5 +50,5 @@ CREATE TABLE pay
 
 1. Levantar docker de MongoDB (Al levantar el microservicio y almacenar un registro se crea automaticamente la coleccion en mongo)
 ```
-$ docker run -p 27018:27017 --network aforo255-test --name mongodb -d mongo
+$ docker run -p 27018:27017 --network distribuidos --name mongodb -d mongo
 ```

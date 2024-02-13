@@ -23,6 +23,8 @@ docker run -d -p 8006:8006 --network distribuidos --name app-invoice estebanm181
 docker build -t estebanm1812/postgres .
 ### Build Mysql Database in folder
 docker build -t estebanm1812/mysql .
+### Up MongoDB
+$ docker run -p 27018:27017 --network distribuidos --name mongodb -d mongo
 ### Up Posgres Data-base in postgres folder
 docker run -d -p 5434:5432  --name postgres --network distribuidos estebanm1812/postgres:latest
 ### Up mysql Data-base in postgres folder
